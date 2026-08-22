@@ -69,4 +69,10 @@ public class EmployeeController {
 		return employeeService.getEmployeeByName(name);
 	}
 	
+	@PutMapping("/employee")
+	public String updateEmployee(@RequestBody Employee employee) {
+		
+		return employeeService.updateEmployee(employee);
+	}
+	
 }

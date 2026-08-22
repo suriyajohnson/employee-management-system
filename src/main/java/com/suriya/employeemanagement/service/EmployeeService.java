@@ -122,4 +122,10 @@ public class EmployeeService {
     	  return ResponseEntity.notFound().build();
     }
     
+    public String updateEmployee(Employee employee) {
+    	 employeeRepository.save(employee);
+    	return "Employee Updated Sucessfully";
+    	
+    }
+    
 }
