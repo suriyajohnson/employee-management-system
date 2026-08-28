@@ -77,14 +77,12 @@ public class EmployeeService {
 //	}
 	
 	public String addEmployee(Employee employee) {
-		
-		if(employeeRepository.findById(employee.getId()).isPresent()) {
-			return "Employee ID Already Present";
-		}
-		
-		employeeRepository.save(employee);
-		
-		return "Employee Added Sucessfully";
+
+	    employee.setStatus("ACTIVE");
+
+	    employeeRepository.save(employee);
+
+	    return "Employee Added Successfully";
 	}
 	
 //	public String deleteEmployee(int id) {

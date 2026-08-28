@@ -1,0 +1,1145 @@
+/*=====================================================
+            GOOGLE FONT
+=====================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/*=====================================================
+            GLOBAL SETTINGS
+=====================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:#eef3fb;
+
+    color:#2d3436;
+
+    overflow-x:hidden;
+
+}
+
+
+/*=====================================================
+            SIDEBAR
+=====================================================*/
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:260px;
+
+    height:100vh;
+
+    background:linear-gradient(180deg,#1e3c72,#2a5298);
+
+    color:white;
+
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+
+    z-index:1000;
+
+}
+
+
+/*=====================================================
+            LOGO
+=====================================================*/
+
+.logo{
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.logo i{
+
+    color:#ffd43b;
+
+}
+
+
+/*=====================================================
+            MENU
+=====================================================*/
+
+.menu{
+
+    list-style:none;
+
+    padding:20px 0;
+
+}
+
+.menu li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px 30px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:16px;
+
+}
+
+.menu li:hover{
+
+    background:rgba(255,255,255,.15);
+
+    padding-left:40px;
+
+}
+
+.menu li.active{
+
+    background:#3b82f6;
+
+}
+
+.menu li i{
+
+    width:22px;
+
+    text-align:center;
+
+}
+
+
+/*=====================================================
+            MAIN CONTENT
+=====================================================*/
+
+.main-content{
+
+    margin-left:260px;
+
+    min-height:100vh;
+
+    background:#eef3fb;
+
+}
+
+/*=====================================================
+            TOP BAR
+=====================================================*/
+
+.topbar{
+
+    height:80px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 35px;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+
+}
+
+.topbar-left{
+    display:flex;
+    align-items:center;
+}
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+/*=====================================================
+            SEARCH BOX
+=====================================================*/
+
+.search-box{
+
+    width:420px;
+
+    height:45px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:30px;
+
+    padding:0 20px;
+
+    background:#f2f5fb;
+
+    transition:.3s;
+
+}
+
+.search-box:focus{
+
+    background:#ffffff;
+
+    box-shadow:0 0 10px rgba(59,130,246,.3);
+
+}
+
+/*=====================================================
+            RIGHT SECTION
+=====================================================*/
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+/*=====================================================
+            NOTIFICATION
+=====================================================*/
+
+.notification-icon{
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    color:#555;
+
+    transition:.3s;
+
+}
+
+.notification-icon:hover{
+
+    color:#2563eb;
+
+    transform:scale(1.1);
+
+}
+
+/*=====================================================
+            PROFILE
+=====================================================*/
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.profile img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #3b82f6;
+
+}
+
+.profile h6{
+
+    margin:0;
+
+    font-weight:600;
+
+}
+
+.profile small{
+
+    color:#777;
+
+}
+
+/*=====================================================
+            WELCOME BANNER
+=====================================================*/
+
+.welcome-banner{
+
+    margin-top:25px;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
+
+}
+
+.welcome-banner h2{
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.welcome-banner span{
+
+    color:#ffd43b;
+
+}
+
+.welcome-banner p{
+
+    margin:0;
+
+    opacity:.95;
+
+}
+
+.welcome-right{
+
+    text-align:right;
+
+}
+
+.welcome-right h3{
+
+    margin-top:10px;
+
+    font-weight:700;
+
+}
+/*=====================================================
+            STATISTICS GRID
+=====================================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+/*=====================================================
+            STATISTICS CARD
+=====================================================*/
+
+.stat-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.stat-card h5{
+
+    color:#666;
+
+    margin-bottom:10px;
+
+    font-size:16px;
+
+}
+
+.stat-card h2{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+    color:#222;
+
+}
+
+.stat-card p{
+
+    color:#888;
+
+    margin:0;
+
+    font-size:14px;
+
+}
+
+/*=====================================================
+            ICON BOX
+=====================================================*/
+
+.stat-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:28px;
+
+}
+
+/*=====================================================
+            CARD COLORS
+=====================================================*/
+
+.blue{
+
+    background:#2563eb;
+
+}
+
+.green{
+
+    background:#16a34a;
+
+}
+
+.red{
+
+    background:#dc2626;
+
+}
+
+.purple{
+
+    background:#7c3aed;
+
+}
+
+/*=====================================================
+            ANALYTICS GRID
+=====================================================*/
+
+.analytics-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+/*=====================================================
+            CHART CARD
+=====================================================*/
+
+.chart-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.card-header-custom{
+
+    margin-bottom:20px;
+
+}
+
+.card-header-custom h4{
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+/*=====================================================
+            CHART CANVAS
+=====================================================*/
+
+.chart-card canvas{
+
+    width:100% !important;
+
+    height:320px !important;
+
+}
+
+/*=====================================================
+            EMPLOYEE TABLE
+=====================================================*/
+
+.table-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    margin-top:35px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.table-header h4{
+
+    margin:0;
+
+    font-weight:600;
+
+}
+
+.table-search{
+
+    width:260px;
+
+    border-radius:30px;
+
+}
+
+.emp-img{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #3b82f6;
+
+}
+
+.table thead{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.table thead th{
+
+    border:none;
+
+}
+
+.table tbody tr{
+
+    transition:.3s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#f4f8ff;
+
+}
+
+/*=====================================================
+            DASHBOARD ROW
+=====================================================*/
+
+.dashboard-row{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+/*=====================================================
+            RECENT ACTIVITIES
+=====================================================*/
+
+.activity-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.activity-card h4{
+
+    margin-bottom:20px;
+
+}
+
+.activity-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.activity-list li{
+
+    padding:12px 0;
+
+    border-bottom:1px solid #eee;
+
+    font-size:15px;
+
+}
+
+.activity-list li:last-child{
+
+    border-bottom:none;
+
+}
+
+/*=====================================================
+            QUICK ACTIONS
+=====================================================*/
+
+.quick-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.quick-card h4{
+
+    margin-bottom:20px;
+
+}
+
+.quick-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.quick-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.quick-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-3px);
+
+}
+
+/*=====================================================
+            CALENDAR & NOTICE BOARD
+=====================================================*/
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+.info-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.info-card h4{
+
+    margin-bottom:18px;
+
+    font-weight:600;
+
+}
+
+.calendar-box{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#2563eb;
+
+    margin-bottom:15px;
+
+}
+
+.notice-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.notice-list li{
+
+    padding:10px 0;
+
+    border-bottom:1px solid #ececec;
+
+    font-size:15px;
+
+}
+
+.notice-list li:last-child{
+
+    border-bottom:none;
+
+}
+
+
+/*=====================================================
+            TOOLBAR
+=====================================================*/
+
+.dashboard-toolbar{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+
+/*=====================================================
+            DARK MODE BUTTON
+=====================================================*/
+
+.theme-toggle{
+
+    background:#111827;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:10px 18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.theme-toggle:hover{
+
+    background:#000000;
+
+}
+
+
+/*=====================================================
+            PROFILE DROPDOWN
+=====================================================*/
+
+.profile-dropdown{
+
+    position:relative;
+
+}
+
+.profile-menu{
+
+    display:none;
+
+    position:absolute;
+
+    right:0;
+
+    top:45px;
+
+    width:200px;
+
+    background:white;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    z-index:999;
+
+}
+
+.profile-dropdown:hover .profile-menu{
+
+    display:block;
+
+}
+
+.profile-menu a{
+
+    display:block;
+
+    padding:12px 18px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    transition:.3s;
+
+}
+
+.profile-menu a:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+
+/*=====================================================
+            FOOTER
+=====================================================*/
+
+.footer{
+
+    margin-top:40px;
+
+    background:#1f2937;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+    border-radius:15px 15px 0 0;
+
+}
+
+.footer h5{
+
+    margin-bottom:8px;
+
+}
+
+.footer p{
+
+    margin:5px 0;
+
+    color:#d1d5db;
+
+}
+
+.footer small{
+
+    color:#9ca3af;
+
+}
+
+
+/*=====================================================
+            RESPONSIVE DESIGN
+=====================================================*/
+
+@media(max-width:1200px){
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.analytics-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.dashboard-row{
+
+grid-template-columns:1fr;
+
+}
+
+.info-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.sidebar{
+
+width:80px;
+
+}
+
+.sidebar .logo span{
+
+display:none;
+
+}
+
+.sidebar li{
+
+justify-content:center;
+
+padding:16px;
+
+}
+
+.sidebar li i{
+
+margin:0;
+
+}
+
+.main-content{
+
+margin-left:80px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+height:auto;
+
+padding:20px;
+
+gap:20px;
+
+}
+
+.search-box{
+
+width:100%;
+
+}
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/*=====================================================
+                DARK MODE
+=====================================================*/
+
+body.dark-mode{
+
+    background:#111827;
+
+    color:white;
+
+}
+
+body.dark-mode .main-content{
+
+    background:#111827;
+
+}
+
+body.dark-mode .topbar{
+
+    background:#1f2937;
+
+    color:white;
+
+}
+
+body.dark-mode .welcome-banner{
+
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+
+}
+
+body.dark-mode .stat-card,
+
+body.dark-mode .chart-card,
+
+body.dark-mode .table-card,
+
+body.dark-mode .activity-card,
+
+body.dark-mode .quick-card,
+
+body.dark-mode .info-card{
+
+    background:#1f2937;
+
+    color:white;
+
+}
+
+body.dark-mode .table{
+
+    color:white;
+
+}
+
+body.dark-mode .table thead{
+
+    background:#2563eb;
+
+}
+
+body.dark-mode .footer{
+
+    background:#000;
+
+}

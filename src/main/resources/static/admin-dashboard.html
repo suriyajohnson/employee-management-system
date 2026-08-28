@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enterprise Employee Management System</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- ======================================================
+                    SIDEBAR START
+======================================================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-building-user"></i>
+
+        <span>EMS Admin</span>
+
+    </div>
+
+    <ul class="menu">
+
+        <li class="active">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-users"></i>
+
+            Employees
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-building"></i>
+
+            Departments
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            Attendance
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-money-check-dollar"></i>
+
+            Payroll
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Reports
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-gear"></i>
+
+            Settings
+
+        </li>
+
+        <li>
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ======================================================
+                    SIDEBAR END
+======================================================= -->
+
+
+
+<!-- ======================================================
+                    MAIN CONTENT START
+======================================================= -->
+
+<div class="main-content">
+
+<!-- ======================================================
+                    TOP NAVBAR START
+======================================================= -->
+
+<div class="topbar">
+
+    <div class="topbar-left">
+
+        <input
+            type="text"
+            id="topSearchEmployee"
+            class="form-control table-search"
+            placeholder="Search Employee">
+
+    </div>
+
+    <div class="topbar-right">
+
+        <i class="fa-solid fa-bell notification-icon"></i>
+
+        <div class="profile">
+
+            <img src="https://i.pravatar.cc/50?img=15">
+
+            <div>
+
+                <h6>Suriya Johnson</h6>
+
+                <small>Administrator</small>
+
+            </div>
+
+        </div>
+
+        <button class="btn btn-danger">
+            Logout
+        </button>
+
+    </div>
+
+</div>
+<!-- ======================================================
+                    TOP NAVBAR END
+======================================================= -->
+
+
+
+<!-- ======================================================
+                    DASHBOARD START
+======================================================= -->
+
+<div class="container-fluid p-4">
+
+<!-- ======================================================
+                    WELCOME BANNER
+======================================================= -->
+
+<div class="welcome-banner">
+
+    <div>
+
+        <h2>
+
+            👋 Welcome Back,
+
+            <span>Suriya Johnson</span>
+
+        </h2>
+
+        <p>
+
+            Manage your employees efficiently from one dashboard.
+
+        </p>
+
+    </div>
+
+    <div class="welcome-right">
+
+        <h5 id="todayDate"></h5>
+
+        <h3 id="clock"></h3>
+
+    </div>
+
+</div>
+
+<!-- ======================================================
+        PART 2 STARTS FROM HERE
+        (Statistics Cards)
+======================================================= -->
+<!-- ======================================================
+                    STATISTICS CARDS
+======================================================= -->
+
+<div class="stats-grid">
+
+    <div class="stat-card employee-card">
+
+        <div>
+
+            <h5>Total Employees</h5>
+
+            <h2 id="empCount">125</h2>
+
+            <p>+15 Employees This Month</p>
+
+        </div>
+
+        <div class="stat-icon blue">
+
+            <i class="fa-solid fa-users"></i>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card active-card">
+
+        <div>
+
+            <h5>Active Employees</h5>
+
+            <h2 id="activeCount">118</h2>
+
+            <p>94% Active</p>
+
+        </div>
+
+        <div class="stat-icon green">
+
+            <i class="fa-solid fa-user-check"></i>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card inactive-card">
+
+        <div>
+
+            <h5>Inactive</h5>
+
+            <h2 id="inactiveCount">7</h2>
+
+            <p>Needs Review</p>
+
+        </div>
+
+        <div class="stat-icon red">
+
+            <i class="fa-solid fa-user-xmark"></i>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card department-card">
+
+        <div>
+
+            <h5>Departments</h5>
+
+            <h2>5</h2>
+
+            <p>+1 New Department</p>
+
+        </div>
+
+        <div class="stat-icon purple">
+
+            <i class="fa-solid fa-building"></i>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+                    ANALYTICS
+======================================================= -->
+
+<div class="analytics-grid">
+
+    <div class="chart-card">
+
+        <div class="card-header-custom">
+
+            <h4>
+
+                📈 Employee Growth
+
+            </h4>
+
+        </div>
+
+        <canvas id="employeeChart"></canvas>
+
+    </div>
+
+    <div class="chart-card">
+
+        <div class="card-header-custom">
+
+            <h4>
+
+                🏢 Department Distribution
+
+            </h4>
+
+        </div>
+
+        <canvas id="departmentChart"></canvas>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+        PART 3 STARTS FROM HERE
+        (Employee Table)
+======================================================= -->
+
+<!-- ======================================================
+                    RECENT EMPLOYEE TABLE
+======================================================= -->
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h4>👨 Recent Employees</h4>
+
+        <div class="d-flex gap-2">
+
+            <input
+                type="text"
+                id="searchEmployee"
+                class="form-control table-search"
+                placeholder="Search Employee"
+                onkeyup="searchEmployee()">
+
+            <button
+                class="btn btn-success"
+                onclick="openEmployeeModal()">
+
+                <i class="fa-solid fa-plus"></i>
+                Add Employee
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>Photo</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Salary</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="employeeTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- ======================================================
+            RECENT ACTIVITIES & QUICK ACTIONS
+======================================================= -->
+
+<div class="dashboard-row">
+
+    <div class="activity-card">
+
+        <h4>🕒 Recent Activities</h4>
+
+        <ul class="activity-list">
+
+            <li>✅ New Employee Added</li>
+
+            <li>💰 Salary Updated</li>
+
+            <li>🏢 Department Created</li>
+
+            <li>📅 Attendance Submitted</li>
+
+            <li>🔐 Admin Logged In</li>
+
+        </ul>
+
+    </div>
+
+    <div class="quick-card">
+
+        <h4>⚡ Quick Actions</h4>
+
+        <div class="quick-grid">
+
+            <button class="quick-btn">
+
+                Add Employee
+
+            </button>
+
+            <button class="quick-btn">
+
+                Departments
+
+            </button>
+
+            <button class="quick-btn">
+
+                Attendance
+
+            </button>
+
+            <button class="quick-btn">
+
+                Reports
+
+            </button>
+
+            <button class="quick-btn">
+
+                Payroll
+
+            </button>
+
+            <button class="quick-btn">
+
+                Settings
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ======================================================
+        PART 4 STARTS FROM HERE
+        (Calendar + Notice Board + Footer)
+======================================================= -->
+
+<!-- ======================================================
+                    CALENDAR & NOTICE BOARD
+======================================================= -->
+
+<div class="info-grid">
+
+    <!-- Calendar -->
+
+    <div class="info-card">
+
+        <h4>📅 Calendar</h4>
+
+        <div id="currentDate" class="calendar-box">
+
+            Loading...
+
+        </div>
+
+        <hr>
+
+        <h5>Upcoming Holidays</h5>
+
+        <ul class="notice-list">
+
+            <li>🎉 Independence Day</li>
+
+            <li>🎄 Christmas</li>
+
+            <li>🎆 New Year</li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- Notice Board -->
+
+    <div class="info-card">
+
+        <h4>📢 Notice Board</h4>
+
+        <ul class="notice-list">
+
+            <li>✔ Team Meeting - Friday 10:00 AM</li>
+
+            <li>✔ Payroll closes on 30th</li>
+
+            <li>✔ Submit Attendance Daily</li>
+
+            <li>✔ HR Policy Updated</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+                    PROFILE SECTION
+======================================================= -->
+
+<div class="dashboard-toolbar">
+
+    <button class="theme-toggle" onclick="toggleDarkMode()">
+
+        🌙 Dark Mode
+
+    </button>
+
+    <div class="profile-dropdown">
+
+        <button class="btn btn-outline-primary">
+
+            👤 Profile
+
+        </button>
+
+        <div class="profile-menu">
+
+            <a href="#">
+
+                My Profile
+
+            </a>
+
+            <a href="#">
+
+                Change Password
+
+            </a>
+
+            <a href="#">
+
+                Notifications
+
+            </a>
+
+            <a href="#">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+                    FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+    <h5>
+
+        Enterprise Employee Management System
+
+    </h5>
+
+    <p>
+
+        Version 2.0 | Developed by Suriya Johnson
+
+    </p>
+
+    <small>
+
+        © 2026 All Rights Reserved
+
+    </small>
+
+</footer>
+
+</div>
+
+<!-- END OF MAIN CONTAINER -->
+
+</div>
+
+<!-- END OF MAIN CONTENT -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/dashboard.js"></script>
+
+<!-- ==========================================
+        ADD EMPLOYEE MODAL
+=========================================== -->
+
+<div class="modal fade" id="employeeModal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h4>Add Employee</h4>
+
+                <button class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label>Employee Code</label>
+                        <input type="text"
+                               id="employeeCode"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Employee Name</label>
+                        <input type="text"
+                               id="employeeName"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <input type="email"
+                               id="employeeEmail"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Mobile</label>
+                        <input type="text"
+                               id="employeeMobile"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Designation</label>
+                        <input type="text"
+                               id="employeeDesignation"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Salary</label>
+                        <input type="number"
+                               id="employeeSalary"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Date Of Joining</label>
+                        <input type="date"
+                               id="employeeJoiningDate"
+                               class="form-control">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+				<button id="saveEmployeeBtn"
+				        class="btn btn-success"
+				        onclick="saveEmployee()">
+				    Save Employee
+				</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="viewEmployeeModal" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h4>Employee Details</h4>
+
+                <button class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <table class="table">
+
+                    <tr>
+                        <th>Employee Code</th>
+                        <td id="viewEmployeeCode"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Name</th>
+                        <td id="viewEmployeeName"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Email</th>
+                        <td id="viewEmployeeEmail"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Mobile</th>
+                        <td id="viewEmployeeMobile"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Designation</th>
+                        <td id="viewEmployeeDesignation"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Salary</th>
+                        <td id="viewEmployeeSalary"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Status</th>
+                        <td id="viewEmployeeStatus"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Date Of Joining</th>
+                        <td id="viewEmployeeDOJ"></td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+</html>

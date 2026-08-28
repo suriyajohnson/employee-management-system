@@ -9,5 +9,9 @@ import com.suriya.employeemanagement.entity.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 	
 	Employee findByName(String name);
+	
+	long countByStatus(String status);
+	
+	//long countByDepartment(String department);
 
 }
