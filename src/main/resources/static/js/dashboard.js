@@ -483,7 +483,7 @@ function initializeDashboard() {
 
 	    console.log("Loading Dashboard Statistics...");
 
-	    fetch("http://localhost:8082/dashboard/statistics")
+	    fetch("/dashboard/statistics")
 	        .then(response => {
 
 	            if (!response.ok) {
@@ -601,7 +601,7 @@ function loadEmployees() {
 
     console.log("Loading Employee Table...");
 
-    fetch("http://localhost:8082/allemployee")
+    fetch("/allemployee")
         .then(response => response.json())
         .then(data => {
 
@@ -712,7 +712,7 @@ function saveEmployee() {
         employee.id = editingEmployeeId;
     }
 
-    const url = "http://localhost:8082/employee";
+    const url = "/employee";
 
     const method = editingEmployeeId == null
         ? "POST"
@@ -777,7 +777,7 @@ function saveEmployee() {
 
 function viewEmployee(id){
 
-    fetch("http://localhost:8082/employee/" + id)
+    fetch("/employee/" + id)
 
     .then(response => response.json())
 
@@ -810,7 +810,7 @@ function viewEmployee(id){
 }
 function editEmployee(id) {
 
-    fetch("http://localhost:8082/employee/" + id)
+    fetch("/employee/" + id)
 
         .then(response => response.json())
 
@@ -856,7 +856,7 @@ function deleteEmployee(id) {
         return;
     }
 
-    fetch("http://localhost:8082/delete/" + id, {
+    fetch("/delete/" + id, {
         method: "DELETE"
     })
 
