@@ -24,6 +24,9 @@ public class Employee {
 	private String mobile;
 
 	private String designation;
+    private Long departmentId;
+    public Long getDepartmentId() { return departmentId; }
+    public void setDepartmentId(Long departmentId) { this.departmentId = departmentId; }
 
 	private double salary;
 

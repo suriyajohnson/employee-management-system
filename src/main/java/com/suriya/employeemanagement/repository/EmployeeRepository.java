@@ -11,6 +11,9 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 	Employee findByName(String name);
 	
 	long countByStatus(String status);
+    boolean existsByDepartmentId(Long departmentId);
+    boolean existsByEmployeeCodeIgnoreCaseAndIdNot(String code, int id);
+    boolean existsByEmailIgnoreCaseAndIdNot(String email, int id);
 	
 	//long countByDepartment(String department);
 

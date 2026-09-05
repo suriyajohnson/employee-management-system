@@ -1,21 +1,144 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Employee Login</title>
-</head>
-<body>
-
-    <h2>Employee Login</h2>
-
-    <label>Username</label><br>
-    <input type="text" id="username"><br><br>
-
-    <label>Password</label><br>
-    <input type="password" id="password"><br><br>
-
-    <button onclick="login()">Login</button>
-
-    <script src="js/login.js"></script>
-
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign in | PeopleDesk</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .login-brand {
+        background: #142d28;
+        color: #fff;
+        padding: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .login-brand .brand {
+        margin: 0;
+      }
+      .login-message {
+        max-width: 460px;
+        margin: 80px 0;
+      }
+      .login-message h1 {
+        font-size: 54px;
+        line-height: 1.15;
+        letter-spacing: -2px;
+      }
+      .login-message h1 span {
+        color: #d5edc6;
+      }
+      .login-message p {
+        font-size: 16px;
+        color: #a7c0b2;
+        margin-top: 24px;
+      }
+      .login-note {
+        color: #829e8e;
+        font-size: 12px;
+      }
+      .login-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+      }
+      .login-form {
+        width: 100%;
+        max-width: 360px;
+      }
+      .login-form h1 {
+        font-size: 30px;
+      }
+      .login-form .form-field {
+        margin-top: 22px;
+      }
+      .login-form .field {
+        padding: 13px;
+      }
+      .login-form .button {
+        width: 100%;
+        margin-top: 24px;
+        padding: 13px;
+      }
+      .login-form .form-hint {
+        margin-top: 24px;
+      }
+      .login-form .subtitle {
+        margin-bottom: 30px;
+      }
+      @media (max-width: 700px) {
+        body {
+          grid-template-columns: 1fr;
+        }
+        .login-brand {
+          padding: 28px;
+        }
+        .login-message {
+          margin: 25px 0 0;
+        }
+        .login-message h1 {
+          font-size: 32px;
+        }
+        .login-message p,
+        .login-note {
+          display: none;
+        }
+        .login-main {
+          padding: 35px 25px;
+        }
+      }
+    </style>
+    <script src="js/login.js" defer></script>
+  </head>
+  <body>
+    <section class="login-brand">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">p<span>·</span></span
+        ><span>PeopleDesk<small>EMPLOYEE MANAGEMENT</small></span></a
+      >
+      <div class="login-message">
+        <h1>Good people.<br />Great teams.<br /><span>One workspace.</span></h1>
+        <p>
+          A thoughtful space to manage your people and make every workday a
+          little simpler.
+        </p>
+      </div>
+      <p class="login-note">Your people. Your progress. All together.</p>
+    </section>
+    <main class="login-main">
+      <form class="login-form" id="loginForm">
+        <p class="eyebrow">WELCOME TO YOUR WORKSPACE</p>
+        <h1>Good to see you again.</h1>
+        <p class="subtitle">Sign in to continue to PeopleDesk.</p>
+        <label class="form-field"
+          >Username<input
+            class="field"
+            id="username"
+            autocomplete="username"
+            required
+            maxlength="100"
+            autofocus /></label
+        ><label class="form-field"
+          >Password<input
+            class="field"
+            type="password"
+            id="password"
+            autocomplete="current-password"
+            required
+        /></label>
+        <p class="form-error" id="loginError" role="alert"></p>
+        <button class="button primary" id="loginButton" type="submit">
+          Sign in to workspace →
+        </button>
+        <p class="form-hint">Use the account provided by your administrator.</p>
+      </form>
+    </main>
+  </body>
 </html>

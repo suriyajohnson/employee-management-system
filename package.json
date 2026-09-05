@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "prettier": "^3.9.6"
+  },
+  "name": "peopledesk-dashboard-checks",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write src/main/resources/static/admin-dashboard.html src/main/resources/static/index.html src/main/resources/static/css/dashboard.css src/main/resources/static/js/dashboard.js src/main/resources/static/js/login.js scripts/dashboard-ui-test.cjs"
+  }
+}

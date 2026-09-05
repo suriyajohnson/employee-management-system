@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.suriya.employeemanagement.entity.Employee;
 import com.suriya.employeemanagement.service.EmployeeService;
 
-@CrossOrigin("*")
+
 @RestController
 public class EmployeeController {
 

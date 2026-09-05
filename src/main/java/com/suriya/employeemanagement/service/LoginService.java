@@ -17,6 +17,7 @@ public class LoginService {
 
     public String userLogin(LoginRequest request) {
 
+        if (request.getUsername() == null || request.getPassword() == null) return "Enter your username and password.";
         Optional<User> dbUser = userRepository.findByUsername(request.getUsername());
 
         if (dbUser.isPresent()) {

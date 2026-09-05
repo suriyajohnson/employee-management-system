@@ -1,129 +1,61 @@
 package com.suriya.employeemanagement.service;
-
-import java.util.ArrayList;
+import com.suriya.employeemanagement.repository.AttendanceRepository;
+import com.suriya.employeemanagement.repository.DepartmentRepository;
+import com.suriya.employeemanagement.repository.EmployeeRepository;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 import com.suriya.employeemanagement.entity.Employee;
-import com.suriya.employeemanagement.repository.EmployeeRepository;
-
 @Service
 public class EmployeeService {
-
-	@Autowired
-	private EmployeeRepository employeeRepository;
-	
-//	ArrayList<Employee> list = new ArrayList<Employee>();
-	
-//	public EmployeeService() {
-//		
-//		list.add(new Employee(101, "Suriya", 40000));
-//		list.add(new Employee(102,"Sathya", 50000));
-//		list.add(new Employee(103,"Karpagam",60000));
-//		
-//	}
-	
-	public List<Employee> getAllEmployee() {
-		
-		return employeeRepository.findAll();
-	}
-	
-//	public String updateSalary(int id,double salary) {
-//		
-//		for(Employee e:list) {
-//			if(e.getId()==id) {
-//				System.out.println(e.getName()+"Previous Salary"+e.getSalary());
-//				e.setSalary(salary);
-//				System.out.println(e.getName()+"Updated Salary"+e.getSalary());
-//				return "Salary Updated Sucessfully";
-//			}
-//		}
-//		return "Employee Not Found";
-//	}
-	
-	public String updateSalary(int id, double salary) {
-
-	    Optional<Employee> optionalEmployee = employeeRepository.findById(id);
-
-	    if(optionalEmployee.isPresent()) {
-
-	        Employee employee = optionalEmployee.get();
-
-	        employee.setSalary(salary);
-
-	        employeeRepository.save(employee);
-
-	        return "Salary Updated Successfully";
-	    }
-
-	    return "Employee Not Found";
-	}
-	
-//	public String addEmployee(Employee employee) {
-//		
-//		for(Employee e:list) {
-//			if(e.getId()== employee.getId()) {
-//				
-//				return "Employee ID Alredy Present";
-//			}
-//		}
-//		list.add(employee);
-//		
-//		return "Employee Added SucessFully";
-//	}
-	
-	public String addEmployee(Employee employee) {
-
-	    employee.setStatus("ACTIVE");
-
-	    employeeRepository.save(employee);
-
-	    return "Employee Added Successfully";
-	}
-	
-//	public String deleteEmployee(int id) {
-//		for(int i=0;i<list.size();i++) {
-//			
-//			if(list.get(i).getId()==id) {
-//				
-//				list.remove(i);
-//				return "Employee Deleted Sucessfully";
-//			}
-//		}
-//		return "Employee Not Found";
-//	}
-	
-	public String deleteEmployee(int id) {
-		if(employeeRepository.findById(id).isPresent()) {
-			employeeRepository.deleteById(id);
-			return "Employee Deleted Sucessfully";
-		}
-		return "Employee Not Found";
-	}
-	
-	public Optional<Employee> getEmployeeById(int id) {
-		return employeeRepository.findById(id);
-	}
-	
+    private final EmployeeRepository employees;
+    private final DepartmentRepository departments;
+    private final AttendanceRepository attendance;
+    public EmployeeService(EmployeeRepository employees, DepartmentRepository departments, AttendanceRepository attendance) {
+        this.employees = employees; this.departments = departments; this.attendance = attendance;
+    }
+    public List<Employee> getAllEmployee() { return employees.findAll(); }
+    private Employee require(int id) {
+        return employees.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found."));
+    }
+    private void validate(Employee e) {
+        if (e.getName() == null || e.getName().isBlank() || e.getName().length() > 100 || e.getEmployeeCode() == null || e.getEmployeeCode().isBlank() || e.getEmployeeCode().length() > 40)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Enter a name and employee code within the allowed lengths.");
+        if (e.getEmail() == null || e.getEmail().length() > 254 || !e.getEmail().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Enter a valid email address.");
+        if (!Double.isFinite(e.getSalary()) || e.getSalary() < 0)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Salary must be a non-negative number.");
+        if (!"ACTIVE".equals(e.getStatus()) && !"INACTIVE".equals(e.getStatus()))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Choose a valid employee status.");
+        if (e.getDateOfJoining() == null || e.getDesignation() == null || e.getDesignation().isBlank() || e.getDesignation().length() > 100 || (e.getMobile() != null && e.getMobile().length() > 30))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Enter a joining date and valid job details.");
+        e.setName(e.getName().trim()); e.setEmployeeCode(e.getEmployeeCode().trim()); e.setEmail(e.getEmail().trim());
+        if (employees.existsByEmployeeCodeIgnoreCaseAndIdNot(e.getEmployeeCode(), e.getId()) || employees.existsByEmailIgnoreCaseAndIdNot(e.getEmail(), e.getId()))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Employee code or email already exists.");
+        if (e.getDepartmentId() != null && !departments.existsById(e.getDepartmentId()))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Selected department no longer exists.");
+    }
+    public String addEmployee(Employee e) {
+        e.setId(0); if (e.getStatus() == null) e.setStatus("ACTIVE");
+        validate(e); employees.save(e); return "Employee added successfully.";
+    }
+    public String updateEmployee(Employee e) {
+        Employee existing = require(e.getId()); if (e.getStatus() == null) e.setStatus(existing.getStatus());
+        validate(e); employees.save(e); return "Employee updated successfully.";
+    }
+    public String updateSalary(int id, double salary) {
+        if (!Double.isFinite(salary) || salary < 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Salary must be non-negative.");
+        Employee e = require(id); e.setSalary(salary); employees.save(e); return "Salary updated successfully.";
+    }
+    @Transactional
+    public String deleteEmployee(int id) {
+        require(id); attendance.deleteByEmployeeId(id); employees.deleteById(id); return "Employee deleted successfully.";
+    }
+    public Optional<Employee> getEmployeeById(int id) { return Optional.of(require(id)); }
     public ResponseEntity<Object> getEmployeeByName(String name) {
-    	
-    	Employee emp = employeeRepository.findByName(name);
-    
-    	if(emp != null){
-    		 return ResponseEntity.ok(emp);
-    	}
-    	    
-    	  return ResponseEntity.notFound().build();
+        Employee e = employees.findByName(name); return e == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(e);
     }
-    
-    public String updateEmployee(Employee employee) {
-    	 employeeRepository.save(employee);
-    	return "Employee Updated Sucessfully";
-    	
-    }
-    
 }
